@@ -1,0 +1,25 @@
+part of 'product_details_cubit.dart';
+
+sealed class ProductDetailsState {}
+
+final class ProductDetailsInitial extends ProductDetailsState {}
+
+final class ProductDetailsLoading extends ProductDetailsState {}
+
+final class ProdutDetailsLoaded extends ProductDetailsState {
+  final ProductItemModel product;
+
+  ProdutDetailsLoaded({required this.product});
+}
+
+final class ProductDetailsError extends ProductDetailsState {
+  final String message;
+
+  ProductDetailsError({required this.message});
+}
+
+final class QuantityCounterLoaded extends ProductDetailsState {
+  final int value;
+
+  QuantityCounterLoaded({required this.value});
+}
