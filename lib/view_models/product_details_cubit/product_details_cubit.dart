@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:ecommerce_app/models/add_to_cart_model.dart';
 import 'package:ecommerce_app/models/product_item_model.dart';
 
 part 'product_details_state.dart';
@@ -6,8 +7,11 @@ part 'product_details_state.dart';
 class ProductDetailsCubit extends Cubit<ProductDetailsState> {
   ProductDetailsCubit() : super(ProductDetailsInitial());
 
+  int quantity = 1;
+  ProductSize? selectdSize;
+
   void getProductDetails(String id) {
-    emit(ProductDetailsLoading());
+    emit(ProductAddingToCart());
     Future.delayed(Duration(seconds: 1), () {
       final selectedItem = dummyProductItems.firstWhere(
         (product) => product.id == id,
@@ -16,24 +20,34 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
     });
   }
 
-  void incrementCounter(String productId) {
-    final selectedIndex = dummyProductItems.indexWhere(
-      (item) => item.id == productId,
+  void addToCart(String ProductId) {
+    emit(ProductAddingToCart());
+    final AddToCartModel cartItem = AddToCartModel(
+      id: DateTime.now().toIso8601String(),
+      product: dummyProductItems.firstWhere(
+        (product) => product.id == ProductId,
+      ),
+      size: selectdSize!,
+      quantity: quantity,
     );
-    dummyProductItems[selectedIndex] = dummyProductItems[selectedIndex]
-        .copyWith(quantity: dummyProductItems[selectedIndex].quantity + 1);
-    emit(ProdutDetailsLoaded(product: dummyProductItems[selectedIndex]));
+    dummyCartItems.add(cartItem);
+    Future.delayed(Duration(seconds: 1), () {
+      emit(ProductAddedToCart(ProductId: ProductId));
+    });
+  }
+
+  void selectSize(ProductSize size) {
+    selectdSize = size;
+    emit(SizeSelected(size: size));
+  }
+
+  void incrementCounter(String productId) {
+    quantity++;
+    emit(QuantityCounterLoaded(value: quantity));
   }
 
   void decrementCounter(String productId) {
-    final selectedIndex = dummyProductItems.indexWhere(
-      (item) => item.id == productId,
-    );
-    final current = dummyProductItems[selectedIndex].quantity;
-    if (current > 0) {
-      dummyProductItems[selectedIndex] = dummyProductItems[selectedIndex]
-          .copyWith(quantity: dummyProductItems[selectedIndex].quantity - 1);
-      emit(ProdutDetailsLoaded(product: dummyProductItems[selectedIndex]));
-    }
+    quantity--;
+    emit(QuantityCounterLoaded(value: quantity));
   }
 }

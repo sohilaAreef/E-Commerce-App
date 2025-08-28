@@ -1,3 +1,5 @@
+enum ProductSize { S, M, L, XL }
+
 class ProductItemModel {
   final String name;
   final String id;
@@ -7,7 +9,6 @@ class ProductItemModel {
   final bool isFavorite;
   final String imgUrl;
   final double averageRate;
-  int quantity;
 
   ProductItemModel({
     required this.name,
@@ -19,20 +20,28 @@ class ProductItemModel {
     this.isFavorite = false,
     required this.imgUrl,
     this.averageRate = 4.5,
-    this.quantity = 1,
   });
 
-  ProductItemModel copyWith({required int quantity}) {
+  ProductItemModel copyWith({
+    String? id,
+    String? name,
+    String? imgUrl,
+    String? description,
+    double? price,
+    bool? isFavorite,
+    String? category,
+    double? averageRate,
+    int? quantity,
+  }) {
     return ProductItemModel(
-      name: name,
-      id: id,
-      description: description,
-      category: category,
-      price: price,
-      isFavorite: isFavorite,
-      imgUrl: imgUrl,
-      averageRate: averageRate,
-      quantity: quantity,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      imgUrl: imgUrl ?? this.imgUrl,
+      description: description ?? this.description,
+      price: price ?? this.price,
+      isFavorite: isFavorite ?? this.isFavorite,
+      category: category ?? this.category,
+      averageRate: averageRate ?? this.averageRate,
     );
   }
 }

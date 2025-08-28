@@ -27,79 +27,72 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) {
-        final cubit = HomeCubit();
-        cubit.getHomeData();
-        return cubit;
-      },
-      child: Scaffold(
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const CircleAvatar(
-                          radius: 25,
-                          backgroundImage: CachedNetworkImageProvider(
-                            'https://media.licdn.com/dms/image/v2/D4D03AQHqh00QKBiqag/profile-displayphoto-scale_200_200/B4DZgEeVbPH0AY-/0/1752421719551?e=1758153600&v=beta&t=W79D1PduzfhdcyETHNeUzsB7WtTUsejgDBTtbMSc_Yw',
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const CircleAvatar(
+                        radius: 25,
+                        backgroundImage: CachedNetworkImageProvider(
+                          'https://media.licdn.com/dms/image/v2/D4D03AQHqh00QKBiqag/profile-displayphoto-scale_200_200/B4DZgEeVbPH0AY-/0/1752421719551?e=1758153600&v=beta&t=W79D1PduzfhdcyETHNeUzsB7WtTUsejgDBTtbMSc_Yw',
+                        ),
+                      ),
+                      const SizedBox(width: 16.0),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Sohila Arif',
+                            style: Theme.of(context).textTheme.labelLarge,
                           ),
-                        ),
-                        const SizedBox(width: 16.0),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Sohila Arif',
-                              style: Theme.of(context).textTheme.labelLarge,
-                            ),
-                            Text(
-                              'Let\'s go shopping!',
-                              style: Theme.of(context).textTheme.labelSmall!
-                                  .copyWith(color: Colors.grey),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.search),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.notifications),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-                TabBar(
-                  dividerHeight: 0,
-
-                  unselectedLabelColor: Colors.grey,
-                  tabs: [Text('Home'), Text('Category')],
-                  controller: _controller,
-                ),
-                SizedBox(height: 20),
-                Expanded(
-                  child: TabBarView(
-                    controller: _controller,
-                    children: [TabBarHome(), Category()],
+                          Text(
+                            'Let\'s go shopping!',
+                            style: Theme.of(context).textTheme.labelSmall!
+                                .copyWith(color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.search),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.notifications),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              TabBar(
+                dividerHeight: 0,
 
-                const SizedBox(height: 16.0),
-              ],
-            ),
+                unselectedLabelColor: Colors.grey,
+                tabs: [Text('Home'), Text('Category')],
+                controller: _controller,
+              ),
+              SizedBox(height: 20),
+              Expanded(
+                child: TabBarView(
+                  controller: _controller,
+                  children: [TabBarHome(), Category()],
+                ),
+              ),
+
+              const SizedBox(height: 16.0),
+            ],
           ),
         ),
       ),
