@@ -1,16 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_app/models/home_carousel_item_model.dart';
-import 'package:ecommerce_app/models/product_item_model.dart';
-import 'package:ecommerce_app/view_models/home_cubit/home_cubit.dart';
 import 'package:ecommerce_app/views/widgets/category.dart';
-import 'package:ecommerce_app/views/widgets/product_item.dart';
 import 'package:ecommerce_app/views/widgets/tab_bar_home.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();

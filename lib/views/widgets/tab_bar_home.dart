@@ -1,9 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_app/models/home_carousel_item_model.dart';
-import 'package:ecommerce_app/models/product_item_model.dart';
 import 'package:ecommerce_app/utils/app_routes.dart';
 import 'package:ecommerce_app/view_models/home_cubit/home_cubit.dart';
-import 'package:ecommerce_app/views/pages/product_details_page.dart';
 import 'package:ecommerce_app/views/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

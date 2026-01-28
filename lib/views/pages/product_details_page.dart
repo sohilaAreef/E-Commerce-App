@@ -64,12 +64,12 @@ class ProductDetailsPage extends StatelessWidget {
                       builder: (context, state) {
                         if (state is ProductAddingToCart) {
                           return ElevatedButton(
-                            onPressed: () => null,
+                            onPressed: () {},
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
+                              backgroundColor: WidgetStateProperty.all(
                                 Theme.of(context).primaryColor,
                               ),
-                              foregroundColor: MaterialStateProperty.all(
+                              foregroundColor: WidgetStateProperty.all(
                                 Colors.white,
                               ),
                             ),
@@ -77,12 +77,12 @@ class ProductDetailsPage extends StatelessWidget {
                           );
                         } else if (state is ProductAddedToCart) {
                           return ElevatedButton(
-                            onPressed: () => null,
+                            onPressed: () {},
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
+                              backgroundColor: WidgetStateProperty.all(
                                 Theme.of(context).primaryColor,
                               ),
-                              foregroundColor: MaterialStateProperty.all(
+                              foregroundColor: WidgetStateProperty.all(
                                 Colors.white,
                               ),
                             ),
@@ -105,10 +105,10 @@ class ProductDetailsPage extends StatelessWidget {
                             }
                           },
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
+                            backgroundColor: WidgetStateProperty.all(
                               Theme.of(context).primaryColor,
                             ),
-                            foregroundColor: MaterialStateProperty.all(
+                            foregroundColor: WidgetStateProperty.all(
                               Colors.white,
                             ),
                           ),
